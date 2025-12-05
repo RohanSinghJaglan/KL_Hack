@@ -5,7 +5,8 @@ import { generateEducationalContent } from './services/geminiService';
 import { InputForm } from './components/InputForm';
 import { QuizCard } from './components/QuizCard';
 import { MindMapViewer } from './components/MindMapViewer';
-import { TeacherDashboard } from './components/TeacherDashboard';
+import { Notes } from './components/Notes';
+import { LandingPage } from './components/LandingPage';
 import { LayoutDashboard, BrainCircuit, GraduationCap, AlertCircle, Sparkles } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -19,7 +20,8 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<GeneratedContent | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'quiz' | 'mindmap' | 'teacher'>('quiz');
+  const [activeTab, setActiveTab] = useState<'quiz' | 'mindmap' | 'notes'>('quiz');
+  const [showLanding, setShowLanding] = useState(true);
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -36,19 +38,22 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen pb-12">
-      {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
+      {showLanding && (
+        <LandingPage onTryDemo={() => setShowLanding(false)} />
+      )}
+      
+      {!showLanding && (
+      <div>
+        {/* Header */}
+        <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center gap-2">
                 <div className="bg-indigo-600 p-2 rounded-lg text-white">
                     <GraduationCap className="w-5 h-5" />
                 </div>
                 <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">
-                    GenAI EduDesigner
+                    FyuleAI
                 </h1>
-            </div>
-            <div className="text-sm text-slate-500 hidden sm:block">
-                Powered by Google Gemini 2.5 Flash
             </div>
         </div>
       </header>
@@ -89,7 +94,7 @@ const App: React.FC = () => {
                 {loading && (
                     <div className="flex flex-col items-center justify-center min-h-[400px]">
                         <div className="w-16 h-16 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mb-4"></div>
-                        <p className="text-slate-600 font-medium animate-pulse">Consulting pedagogical models...</p>
+                        <p className="text-slate-600 font-medium animate-pulse">Please wait...</p>
                         <p className="text-slate-400 text-sm mt-1">Generating quizzes, logic maps, and notes.</p>
                     </div>
                 )}
@@ -117,13 +122,13 @@ const App: React.FC = () => {
                                 Mind Map
                             </button>
                             <button
-                                onClick={() => setActiveTab('teacher')}
+                                onClick={() => setActiveTab('notes')}
                                 className={`flex-1 py-4 text-sm font-semibold flex items-center justify-center gap-2 transition-colors
-                                    ${activeTab === 'teacher' ? 'text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50/50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'}
+                                    ${activeTab === 'notes' ? 'text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50/50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'}
                                 `}
                             >
                                 <GraduationCap className="w-4 h-4" />
-                                Teacher View
+                                Notes
                             </button>
                         </div>
 
@@ -164,8 +169,8 @@ const App: React.FC = () => {
                                 </div>
                             )}
 
-                            {activeTab === 'teacher' && (
-                                <TeacherDashboard data={data} />
+                            {activeTab === 'notes' && (
+                                <Notes data={data} />
                             )}
                         </div>
                     </div>
@@ -173,6 +178,8 @@ const App: React.FC = () => {
             </div>
         </div>
       </main>
+      </div>
+      )}
     </div>
   );
 };

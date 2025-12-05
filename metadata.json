@@ -1,5 +1,0 @@
-{
-  "name": "GenAI EduDesigner",
-  "description": "An AI-powered instructional design assistant that generates quizzes, mind maps, and teacher guides using Google Gemini.",
-  "requestFramePermissions": []
-}
