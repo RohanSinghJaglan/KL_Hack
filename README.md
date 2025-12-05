@@ -1,20 +1,40 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🚀 FyuleAI - AI-Powered Educational Content Generator
 
-# Run and deploy your AI Studio app
+> Transform education with AI. Create personalized quizzes, mind maps, and learning materials in seconds.
 
-This contains everything you need to run your app locally.
+FyuleAI is an intelligent educational platform that leverages Google Gemini API to generate comprehensive, adaptive learning materials tailored to any topic and grade level.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Xc4Kpwv_JEiRwW4UDOIqsEll9z6Nu9wF
+## ✨ Features
 
-## Run Locally
+- **Interactive Quizzes** - AI-generated questions with adaptive difficulty levels, detailed explanations, and distractor analysis
+- **Visual Mind Maps** - Auto-generated concept diagrams with color-coded relationships to enhance understanding
+- **Smart Learning Notes** - Key takeaways, teaching points, and thought-provoking questions to spark curiosity
+- **Adaptive Learning** - Questions adjust based on difficulty profiles (beginner, intermediate, advanced)
 
-**Prerequisites:**  Node.js
+## 🛠️ Tech Stack
+
+- **Frontend**: React 19.2.1 + TypeScript
+- **Build Tool**: Vite 6.4.1
+- **Styling**: Tailwind CSS
+- **AI Engine**: Google Gemini 2.5 Flash API
+- **Icons**: Lucide React
+- **Diagrams**: Mermaid
+
+## 📋 Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- Google Gemini API key (get it from [Google AI Studio](https://aistudio.google.com/apikey))
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 📚 How to Use
+
+1. **Launch the App** - Click "Try Demo" on the landing page
+2. **Configure Content** - Enter your topic, select grade level, language, and difficulty
+3. **Generate** - Click generate to create personalized learning materials
+4. **Explore**:
+   - 📝 **Quiz Tab** - Answer interactive questions with instant feedback
+   - 🗺️ **Mind Map Tab** - Visualize concept relationships
+   - 📖 **Notes Tab** - Read key points and explore questions
+
+
